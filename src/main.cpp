@@ -1,8 +1,8 @@
-#define OLC_PGE_APPLICATION
-
 #include <iostream>
 #include <time.h>
 #include <vector>
+
+#define OLC_PGE_APPLICATION
 #include "olcPixelGameEngine.h"
 
 class Snake : public olc::PixelGameEngine
@@ -12,6 +12,9 @@ public:
 		sAppName = "Snake Game";
 	}
 
+	int get_score() const {
+		return score;
+	}
 private:
 	int score = 0;
 	float speed = 0.2f;
@@ -39,10 +42,6 @@ private:
 		return { ScreenWidth() >> 1, ScreenHeight() >> 1 };
 	}
 
-public:
-	int get_score() const{
-		return score;
-	}
 protected:
 	bool OnUserCreate() override {
 		srand(time(NULL));
@@ -86,20 +85,20 @@ protected:
 		olc::vi2d lastBlock = snake[0];
 
 		switch (dir) {
-		case 0: //UP
 
+		case 0: //UP
 			snake.insert(snake.begin(), { lastBlock.x, lastBlock.y - 1 });
 			break;
-		case 1: // RIGHT
 
+		case 1: // RIGHT
 			snake.insert(snake.begin(), { lastBlock.x + 1, lastBlock.y });
 			break;
-		case 2: // DOWN
 
+		case 2: // DOWN
 			snake.insert(snake.begin(), { lastBlock.x, lastBlock.y + 1 });
 			break;
-		case 3: // LEFT
 
+		case 3: // LEFT
 			snake.insert(snake.begin(), { lastBlock.x - 1 , lastBlock.y });
 			break;
 		}
