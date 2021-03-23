@@ -5,11 +5,11 @@
 #include <vector>
 #include "olcPixelGameEngine.h"
 
-class Demo : public olc::PixelGameEngine
+class Snake : public olc::PixelGameEngine
 {
 public:
-	Demo() {
-		sAppName = "Demo";
+	Snake() {
+		sAppName = "Snake Game";
 	}
 
 private:
@@ -138,9 +138,9 @@ protected:
 };
 
 int main() {
-	Demo demo;
-	if (demo.Construct(32, 32, 30, 30))
-		demo.Start();
-	std::cout << "Score: " << demo.get_score();
+	Snake game;
+	if (game.Construct(32, 32, 30, 30))
+		game.Start();
+	std::cout << "Score: " << game.get_score();
 	return 0;
 }
